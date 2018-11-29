@@ -1,7 +1,7 @@
-This project contains all you need to start the environment created to perform some attacks over a fake IoT IPv6 interconected environment.
+This project contains all you need to start the environment created to perform some attacks over a fake IoT IPv6 interconnected environment.
 
 .
-├── Readme.md
+├── README.md
 ├── attackenvs
 │   ├── discover
 │   │   └── docker-compose.yml
@@ -27,7 +27,7 @@ Use Docker Compose to create the environments. During the main server started pr
 
 == IoT env ==
 
-You can force the environment start using docker-compose command on docker-compose Yaml file directory. 
+You can force the environment start using docker-compose command on docker-compose Yaml file directory.
 
 $ cd attackenv
 $ docker-compose up -d
@@ -51,4 +51,4 @@ Sky Dive project provides a web page where you can see the network topology and 
 We use this interface to show our topologies created using Docker Compose and to get traffic captures.
 
 $ cd skydive
-$ docker-compose up 
+$ docker-compose up
