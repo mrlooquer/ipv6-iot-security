@@ -30,17 +30,21 @@ Use Docker Compose to create the environments. During the main server started pr
 
 You can force the environment start using docker-compose command on docker-compose Yaml file directory.
 
+```sh
 $ cd attackenv
 $ docker-compose up -d
 $ docker-compose ps
 $ docker-compose stop
+```
 
 # Docker Base Image
 
 All environments use the same docker image. The image is created using Dockerfile included in dockerbaseimage directory.
 
+```sh
 $ cd dockerbaseimage
 $ docker build -t iotmachine .
+```
 
 ## Attacks
 
@@ -51,5 +55,7 @@ $ docker build -t iotmachine .
 Sky Dive project provides a web page where you can see the network topology and details about docker machines you are running.
 We use this interface to show our topologies created using Docker Compose and to get traffic captures.
 
+```sh
 $ cd skydive
 $ docker-compose up
+```
