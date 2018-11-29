@@ -1,0 +1,161 @@
+version: '2.1'
+
+services:
+  attacker:
+    image: iotmachine:latest
+    tty: true
+    stdin_open: true
+    #command: ifconfig
+    ports:
+      - "8122:8022"
+      - "2281:22"
+      - "4381:4343"
+    networks:
+      app_net:
+        ipv4_address: 10.16.2.81
+        ipv6_address: 2a02:16:33::81
+
+  victim:
+    image: iotmachine:latest
+    tty: true
+    stdin_open: true
+    #command: ifconfig
+    ports:
+      - "8222:8022"
+      - "2282:22"
+    networks:
+      app_net:
+        ipv4_address: 10.16.2.82
+        ipv6_address: 2a02:16:33::82
+
+  victim2:
+    image: iotmachine:latest
+    tty: true
+    stdin_open: true
+    ports:
+      - "222:8022"
+      - "2202:22"
+    networks:
+      app_net:
+        ipv4_address: 10.16.2.2
+        ipv6_address: 2a02:16:33::2
+
+  victim3:
+    image: iotmachine:latest
+    tty: true
+    stdin_open: true
+    ports:
+      - "322:8022"
+      - "2203:22"
+    networks:
+      app_net:
+        ipv4_address: 10.16.2.3
+        ipv6_address: 2a02:16:33::3
+
+  victim4:
+    image: iotmachine:latest
+    tty: true
+    stdin_open: true
+    ports:
+      - "422:8022"
+      - "2204:22"
+    networks:
+      app_net:
+        ipv4_address: 10.16.2.4
+        ipv6_address: 2a02:16:33::4
+
+  victim5:
+    image: iotmachine:latest
+    tty: true
+    stdin_open: true
+    ports:
+      - "522:8022"
+      - "2205:22"
+    networks:
+      app_net:
+        ipv4_address: 10.16.2.5
+        ipv6_address: 2a02:16:33::5
+
+  victim6:
+    image: iotmachine:latest
+    tty: true
+    stdin_open: true
+    ports:
+      - "622:8022"
+      - "2206:22"
+    networks:
+      app_net:
+        ipv4_address: 10.16.2.6
+        ipv6_address: 2a02:16:33::6
+
+  victim8:
+    image: iotmachine:latest
+    tty: true
+    stdin_open: true
+    ports:
+      - "822:8022"
+      - "2208:22"
+    networks:
+      app_net:
+        ipv4_address: 10.16.2.8
+        ipv6_address: 2a02:16:33::8
+
+  victim9:
+    image: iotmachine:latest
+    tty: true
+    stdin_open: true
+    ports:
+      - "922:8022"
+      - "2209:22"
+    networks:
+      app_net:
+        ipv4_address: 10.16.2.9
+        ipv6_address: 2a02:16:33::9
+
+  victim10:
+    image: iotmachine:latest
+    tty: true
+    stdin_open: true
+    ports:
+      - "1022:8022"
+      - "2210:22"
+    networks:
+      app_net:
+        ipv4_address: 10.16.2.10
+        ipv6_address: 2a02:16:33::a
+
+  victim53:
+    image: iotmachine:latest
+    tty: true
+    stdin_open: true
+    ports:
+      - "5322:8022"
+      - "2253:22"
+    networks:
+      app_net:
+        ipv4_address: 10.16.2.53
+        ipv6_address: 2a02:16:33::53
+
+  victim25:
+    image: iotmachine:latest
+    tty: true
+    stdin_open: true
+    ports:
+      - "2522:8022"
+      - "2225:22"
+    networks:
+      app_net:
+        ipv4_address: 10.16.2.25
+        ipv6_address: 2a02:16:33::25
+
+networks:
+  app_net:
+    enable_ipv6: true
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+      - subnet: 10.16.2.0/24
+        gateway: 10.16.2.1
+      - subnet: 2a02:16:33::/64
+        gateway: 2a02:16:33::1

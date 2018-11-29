@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<!-- Template by quackit.com -->
+<html>
+	<head>
+	
+        <link rel="stylesheet" href="static/main.css">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>IoT Attacks - Skydive Based - </title>
+	</head>
+	<body>
+		<main>
+			<div class="embed-container">
+    			<iframe id="skydive" width="560" height="315" src="http://127.0.0.1:8082" frameborder="0" allowfullscreen></iframe>
+			</div>
+		</main>
+
+		<nav id="left">
+			<div class="innertube">
+				<h1>Attacks</h1>
+				<ul>
+					<li><a href="#" id="synflood">Synflood Attack</a></li>
+					<li><a href="#" id="discovery">Discover Attack</a></li>
+					<li><a href="#" id="multipleh">Syn Scan Mult. EH</a></li>
+					<li><a href="#" id="multiplesrc">Syn Scan Mult. SRC</a></li>
+					<li><a href="#" id="ndp">NDP Exhaustion</a></li>
+				</ul>
+				<h1>Environment</h1>
+				<ul>
+					<li><a href="#" id="reloadenv">Reload Env.</a></li>
+				</ul>
+
+			</div>
+		</nav>
+			<!-- Syn Flood The Modal -->
+			<div id="synfloodmodal" class="modal">
+			  <!-- Modal content -->
+			  <div class="modal-content">
+			    <span class="close"></span>
+			    <div id="content">
+			    	<h2> Syn Flood Attack </h2>
+			    	<h3>Description</h3><p>TThis attack is a variation of the classic TCP Syn Flood attack. In this case, IPv6 addressing allows an attacker to use huge source IPv6 addressing space to launch the attack.</p>
+					<h3>Impact</h3>
+					<p>IPv6 the attacker can use one single host to send almost unlimited packets with different source IP address, even if the network of the hosts doesn’t allow IP spoofing. If the attacker has the control of a botnet of compromised hosts the attacks can be launched also and each hosts could send packets from almost unlimited different source IPs.</p>
+					<h3>Mitigation</h3>
+					<p>In order to protect against this type of attacks all IDS/IPS systems and other security mechanisms that will detect and block syn flood attacks need to adapt to IPv6 addressing scheme. To achieve this it’s necessary to analyze not just the source IPV6 addresses of the incoming traffic but also the prefix.</p>
+			  	</div>
+			  	<div id="sidebar">
+			  		<h3>Demostration</h3>
+			  		<p>To understand the technical details of this security issue it has been included a demonstration in the environment that simulates a remote attacker that launches this variation of Syn Flood attacks to several IoT victims that has IPv6 addresses.</p>
+			  		<a href="#" id="runsynflood">Run</a>
+			  	</div>
+			  	<div id="cleared"></div>
+			  </div>
+			</div>
+
+			<!-- Discovery Attack The Modal -->
+			<div id="discoverymodal" class="modal">
+			  <!-- Modal content -->
+			  <div class="modal-content">
+			    <span class="close"></span>
+			    <div id="content">
+			    	<h2> Discovery Attack </h2>
+			    	<h3>Description</h3>
+			    	<p>Giving predictable IPv6 addressing to IoT devices may expose them to remote discovery and therefore turn them into target of other attacks. </p>
+					<h3>Impact</h3>
+					<p>It should be considered the fact that remote attackers will try to discover targets in the firsts stages of the attacks. Using predictable addresses to IoT devices will expose this equipment to easily be discovered by attackers and posing them to the risk of being attacked.</p>
+					<h3>Mitigation</h3>
+					<p>Using random IPv6 addresses in networks for all IoT devices will mitigate the risk of the equipment being discovered by attackers.</p>
+				</div>
+			  	<div id="sidebar">
+			  		<h3>Demostration</h3>
+			  		<p>To understand the technical details of this security issue it has been included a demonstration in the environment that simulates a remote attacker that wants to discover IoT victims that has IPv6 addresses. </br>
+			  		In this case, it has been configured in the testing environment several hosts with predictable addresses and other hots with unpredictable addresses.</p>
+			  		<a href="#" id="discoveryrun">Run</a>
+			  	</div>
+			  	<div id="cleared"></div>
+			  </div>
+			</div>
+
+			<!-- TCP SYN Scan using multiple EH in each packet The Modal -->
+			<div id="multiplehmodal" class="modal">
+			  <!-- Modal content -->
+			  <div class="modal-content">
+			    <span class="close"></span>
+			    <div id="content">
+			    	<h2>SYN Scan using multiple EH</h2>
+			    	<h3>Description</h3>
+			    	<p>Sending traffic with packets containing multiple Extension Headers (EH) causing strange and unexpected behavior on  any element that inspects traffic. Extension Headers is a new feature included in the design of IPv6 protocol and can be used to generated strange traffic may cause strange behaviours in IoT equipment due to the limited processing capabilities of this type of equipment.</p>
+					<h3>Impact</h3>
+					<p>Using of Extension Headers makes the IPv6 header to be of variable sizes and this is an important change from IPv4 that can impact in packet inspection procedures. An IPv6 packet can include several EH (up to 12 different Extension headers) in each packet sent and the traffic can be considered as “legal”.</p>
+					<h3>Mitigation</h3>
+					<p>To avoid this type of traffic it can be done from the perspective of discarding any type of traffic that contains more that the extension headers that can be considered as normal. For that, it can be done an analysis of the environment at network level and determine how many EH are necessary in the IoT environment, if any. Then, in the gateway it can be configured a rule to discard all packets that contain more than the EH expected.</p>
+				</div>
+			  	<div id="sidebar">
+			  		<h3>Demostration</h3>
+			  		<p>To understand the technical details of this security issue it has been included a demonstration in the environment that simulates a remote attacker that sends traffic with multiple Extension Headers to several targets. The scripts in included in the demo send nine EH for each IPv6 packet sent.</p>
+			  		<a href="#" id="multiplehrun">Run</a>
+			  	</div>
+			  	<div id="cleared"></div>
+			  </div>
+			</div>
+
+			<!-- TCP SYN Scan The Modal -->
+			<div id="multiplesynmodal" class="modal">
+			  <!-- Modal content -->
+			  <div class="modal-content">
+			    <span class="close"></span>
+			    <div id="content">
+			    	<h2>SYN Scan using multiple origins</h2>
+			    	<h3>Description</h3>
+			    	<p>This attack is a variation of the classic TCP Syn scan attack. In this case, IPv6 addressing allows an attacker to use huge source IPv6 addressing space to launch the attack. The main difference here with classical IPv4 scans is that each probe can be launched from a different IPv6 address so the traffic generated changes considerably in the network layer.</p>
+					<h3>Impact</h3>
+					<p>In case of Syn scans in IPv4 the attacker needs to send the traffic from the same IP address because it is needed the response of the target to discover open ports. However, in IPv6 the attacker can use one different IP address for each prove sent.</p>
+					<h3>Mitigation</h3>
+					<p>In order to protect against this type of attacks all IDS/IPS systems and other security mechanisms that will detect and block network scans need to adapt to IPv6 addressing scheme. To achieve this it’s necessary to analyze not just the source IPV6 addresses of the incoming traffic but also the prefix.</p>
+				</div>
+			  	<div id="sidebar">
+			  		<h3>Demostration</h3>
+			  		<p>To understand the technical details of this security issue it has been included a demonstration in the environment that simulates a remote attacker that launches several Syn tcp scans to several IoT victims that has IPv6 addresses.</p>
+			  		<a href="#" id="multiplesynrun">Run</a>
+			  	</div>
+			  	<div id="cleared"></div>
+			  </div>
+			</div>
+
+			<!-- NDP The Modal -->
+			<div id="ndpmodal" class="modal">
+			  <!-- Modal content -->
+			  <div class="modal-content">
+			    <span class="close"></span>
+			    <div id="content">
+			    	<h2>NDP Exhaustion Attack</h2>
+			    	<h3>Description</h3>
+			    	<p>It is possible abuse IPv6 Neighbor Discovery Protocol (NDP) to exhaust the cache of a gateway element that performs Level 2 address resolution. In this case it has been simulated several hosts in the environment that are gateways of other network segments.</p>
+					<h3>Impact</h3>
+					<p>In IoT environments is common that the gateway elements forward traffic and make other type of controls to multiple IoT smaller devices. In this case, these gateway equipment is specifically sensible and an attack to this devices could have high impact in the environment. 
+					</br>If the gateway makes also resolution at layer 2 (physical address) to other elements it can be a potential victim of NDP exhaustion attacks.</p>
+					<h3>Mitigation</h3>
+					<p>To mitigate this type of attacks it can be applied the anti-DoS security controls like the ones mentioned in previous sections. Also, it can be considered to configure threshold limits in the gateway according to the IoT environment. It could be analyzed the number of different destination IPv6 addresses that is normal to be received in the gateway and establish the threshold according to that.</p>
+				</div>
+			  	<div id="sidebar">
+			  		<h3>Demostration</h3>
+			  		<p>TTo understand the technical details of this security issue it has been included a demonstration in the environment that simulates a remote attacker that launches several NDP exhaustion attacks to several IoT gateways. 
+			  		</br>It should be considered that this attacks can be executed remotely and the environment simulates and attacker and some gateways that can be located at any point of Internet.</p>
+			  		<a href="#" id="ndprun">Run</a>
+			  	</div>
+			  	<div id="cleared"></div>
+			  </div>
+			</div>
+			
+
+<script>
+
+// Reload Env
+var btnreloadenv = document.getElementById("reloadenv");
+btnreloadenv.onclick = function() {
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.onreadystatechange = function() { 
+        if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+        {
+            //callback(xmlHttp.responseText);
+            btnreloadenv.value = "Running";
+        }
+    }
+    xmlHttp.open("GET", "http://127.0.0.1:5000/reloadenv", true); // true for asynchronous 
+    xmlHttp.send(null);
+}
+
+// Get RUN Synflood
+var btnsynflood = document.getElementById("runsynflood");
+btnsynflood.onclick = function() {
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.onreadystatechange = function() { 
+        if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+        {
+            //callback(xmlHttp.responseText);
+            btnsynflood.value = "Running";
+        }
+    }
+    xmlHttp.open("GET", "http://127.0.0.1:5000/synflood", true); // true for asynchronous 
+    xmlHttp.send(null);
+}
+
+// Get RUN Discovery
+var btndiscovery = document.getElementById("discoveryrun");
+btndiscovery.onclick = function() {
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.onreadystatechange = function() { 
+        if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+        {
+            //callback(xmlHttp.responseText);
+            btndiscovery.value = "Running";
+        }
+    }
+    xmlHttp.open("GET", "http://127.0.0.1:5000/discovery/", true); // true for asynchronous 
+    xmlHttp.send(null);
+}
+
+// Get RUN multipleh
+var btnmultipleh = document.getElementById("multiplehrun");
+btnmultipleh.onclick = function() {
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.onreadystatechange = function() { 
+        if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+        {
+            //callback(xmlHttp.responseText);
+            btnmultipleh.value = "Running";
+        }
+    }
+    xmlHttp.open("GET", "http://127.0.0.1:5000/multipleh/", true); // true for asynchronous 
+    xmlHttp.send(null);
+}
+
+// Get RUN multiplesyn
+var btnmultiplesyn = document.getElementById("multiplesynrun");
+btnmultiplesyn.onclick = function() {
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.onreadystatechange = function() { 
+        if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+        {
+            //callback(xmlHttp.responseText);
+            btnmultiplesyn.value = "Running";
+        }
+    }
+    xmlHttp.open("GET", "http://127.0.0.1:5000/multiplesyn/", true); // true for asynchronous 
+    xmlHttp.send(null);
+}
+
+// Get RUN ndp
+var btnndprun = document.getElementById("ndprun");
+btnndprun.onclick = function() {
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.onreadystatechange = function() { 
+        if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+        {
+            //callback(xmlHttp.responseText);
+            btnndprun.value = "Running";
+        }
+    }
+    xmlHttp.open("GET", "http://127.0.0.1:5000/ndpexhaustion/", true); // true for asynchronous 
+    xmlHttp.send(null);
+}
+
+//////////////
+// SYNFLOOD //
+//////////////
+// Get the modal Synflood
+var modalsf = document.getElementById('synfloodmodal');
+
+// Get the button that opens the modal
+var btnsf = document.getElementById("synflood");
+
+// Get the <span> element that closes the modal
+var spansf = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+btnsf.onclick = function() {
+    modalsf.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+spansf.onclick = function() {
+    modalsf.style.display = "none";
+}
+
+//////////////////////
+// Extension Header //
+/////////////////////
+// Get the modal Discover
+var modaleh = document.getElementById('multiplehmodal');
+
+// Get the button that opens the modal
+var btneh = document.getElementById("multipleh");
+
+var spaneh = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+btneh.onclick = function() {
+    modaleh.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+spaneh.onclick = function() {
+    modaleh.style.display = "none";
+}
+
+
+//////////////
+// DISCOVER //
+//////////////
+// Get the modal Discover
+var modald = document.getElementById('discoverymodal');
+
+// Get the button that opens the modal
+var btnd = document.getElementById("discovery");
+
+var spand = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+btnd.onclick = function() {
+    modald.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+spand.onclick = function() {
+    modald.style.display = "none";
+}
+
+/////////////////////
+// Multiple Origin //
+////////////////////
+// Get the modal Discover
+var modalsyn = document.getElementById('multiplesynmodal');
+
+// Get the button that opens the modal
+var btnsyn = document.getElementById("multiplesrc");
+
+var spansyn = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+btnsyn.onclick = function() {
+    modalsyn.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+spansyn.onclick = function() {
+    modalsyn.style.display = "none";
+}
+
+/////////////////////
+// NDP            //
+////////////////////
+// Get the modal Discover
+var modalndp = document.getElementById('ndpmodal');
+
+// Get the button that opens the modal
+var btnndp = document.getElementById("ndp");
+
+var spanndp = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+btnndp.onclick = function() {
+    modalndp.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+spanndp.onclick = function() {
+    modalndp.style.display = "none";
+}
+
+
+//////////////////
+// Close modals //
+//////////////////
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modald) {
+        modald.style.display = "none";
+    };
+    if (event.target == modalsf) {
+        modalsf.style.display = "none";
+    };
+    if (event.target == modaleh) {
+        modaleh.style.display = "none";
+    };
+    if (event.target == modalsyn) {
+        modalsyn.style.display = "none";
+    };
+    if (event.target == modalndp) {
+        modalndp.style.display = "none";
+    }
+
+}
+
+
+</script>
+	</body>
+</html>
